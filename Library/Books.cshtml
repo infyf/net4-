@@ -1,0 +1,30 @@
+﻿@model List<LR4.Models.Book>
+
+@{
+    ViewData["Title"] = "Список Книг";
+}
+
+<h1>Список Книг</h1>
+@if (Model != null && Model.Count > 0)
+{
+    <div style="display: flex; flex-wrap: nowrap; overflow-x: auto;">
+        @foreach (var book in Model)
+        {
+            <div style="margin: 10px; text-align: center;">
+                <a href="https://media.proglib.io/wp-uploads/2017/04/9781509304066.png">
+                    @{
+                        var imageUrl = $"~/images/book_{book.Id}.png";
+                    }
+                    <img src="@imageUrl" alt="@book.Title" style="width: 150px; height: 200px;" />
+                </a>
+                <h3>@book.Title</h3>
+                <p>@book.Description</p>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>Немає доступних книг для відображення.</p>
+}
+<button onclick="location.href='@Url.Action("Index", "Library")'">Запит Libraryу</button>

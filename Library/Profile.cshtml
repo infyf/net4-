@@ -1,0 +1,29 @@
+﻿@model LR4.Models.User
+
+@{
+    ViewData["Title"] = "Профіль Користувача";
+}
+
+<h1>Профіль Користувача</h1>
+
+<!-- Форма для введення ID -->
+<form method="get" action="@Url.Action("Profile", "Library")">
+    <label for="userId">Введіть ID користувача (0-5):</label>
+    <input type="number" id="userId" name="id" min="0" max="5" required />
+    <button type="submit">Показати Профіль</button>
+</form>
+
+@if (Model != null)
+{
+    <h2>Інформація про користувача:</h2>
+    <p><strong>Ім'я:</strong> @Model.Name</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+    <p><strong>Роль:</strong> @Model.Role</p>
+}
+else
+{
+    <p>Користувача не знайдено.</p>
+}
+
+<button onclick="location.href='@Url.Action("Books", "Library")'">Переглянути Книги</button>
+<button onclick="location.href='@Url.Action("Index", "Library")'">Запит Library </button>

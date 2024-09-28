@@ -1,0 +1,19 @@
+﻿@model LR4.Models.User
+
+@{
+    ViewData["Title"] = "Головна";
+}
+
+@if (Model != null)
+
+{
+    <h2>Привіт, @Model.Name!</h2>
+}
+
+else
+
+{
+    <h2>Привіт, Гість!</h2>
+}
+<button onclick="location.href='@Url.Action("Books", "Library")'">Переглянути Книги</button>
+<button onclick="location.href='@Url.Action("Profile", "Library")'">Мій Профіль</button>
